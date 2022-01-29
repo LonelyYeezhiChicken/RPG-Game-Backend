@@ -17,41 +17,51 @@ namespace GameModels.Characters.Models
         /// 血量
         /// HP
         /// </summary>
-        public int Health { get; set; }
+        public double Health { get; set; }
         /// <summary>
         /// 魔力
         /// MP
         /// </summary>
-        public int Magic { get; set; }
+        public double Magic { get; set; }
         /// <summary>
         /// 行動值
         /// AP
         /// </summary>
-        public int ActionPoint { get; set; }
+        public double ActionPoint { get; set; }
         /// <summary>
-        /// 攻擊力
+        /// 攻擊力(基礎傷害)
         /// STR
         /// </summary>
-        public int Strength { get; set; }
+        public double Strength { get; set; }
         /// <summary>
         /// 智力
-        /// INT
+        /// Inte
         /// </summary>
-        public int Intelligence { get; set; }
+        public double Intelligence { get; set; }
         /// <summary>
         /// 敏捷
         /// DEX
         /// </summary>
-        public int Dexterity { get; set; }
+        public double Dexterity { get; set; }
         /// <summary>
         /// 幸運
         /// LUK
         /// </summary>
-        public int Luck { get; set; }
+        public double Luck { get; set; }
         /// <summary>
         /// 靈巧
         /// AGI
         /// </summary>
-        public int Agility { get; set; }
+        public double Agility { get; set; }
+        /// <summary>
+        /// 物理攻擊
+        /// ATK
+        /// </summary>
+        public double  Attack { get; set; }
+        /// <summary>
+        /// 魔法傷害
+        /// MATK
+        /// </summary>
+        public double Mattack { get; set; }
     }
 }

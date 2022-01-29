@@ -1,6 +1,6 @@
-﻿using GameModels.Characters.Interfaces;
+﻿using GameModels.Characters.Helper;
+using GameModels.Characters.Interfaces;
 using GameModels.Characters.Models;
-using System;
 
 namespace GameModels.Characters.Types
 {
@@ -11,12 +11,18 @@ namespace GameModels.Characters.Types
     {
         /// <summary>
         /// 戰士能力值
+        /// 物理攻擊力:1.5倍
+        /// Ap:1.5倍
+        /// HP:1.5倍
         /// </summary>
-        /// <param name="ability"></param>
+        /// <param name="ability">基本數值</param>
         /// <returns></returns>
         public AbilityDto Ability(AbilityDto ability)
         {
-            throw new NotImplementedException();
+            ability.Attack = FormulaHelper.AbilityRatio(ability.Attack, 1.5);
+            ability.Strength = FormulaHelper.AbilityRatio(ability.Strength, 1.5);
+            ability.Health = FormulaHelper.AbilityRatio(ability.Health, 1.5);
+            return ability;
         }
 
     }

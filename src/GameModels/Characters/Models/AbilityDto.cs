@@ -49,7 +49,7 @@ namespace GameModels.Characters.Models
         /// </summary>
         public double Luck { get; set; }
         /// <summary>
-        /// 靈巧
+        /// 靈巧,迴避
         /// AGI
         /// </summary>
         public double Agility { get; set; }

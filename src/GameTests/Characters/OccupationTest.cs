@@ -49,7 +49,7 @@ namespace GameTests.Characters
             var actual = occupation.Ability(abilityDto);
             var expected = ability;
 
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(JsonConvert.SerializeObject(expected), JsonConvert.SerializeObject(actual));
         }
 
         /// <summary>
@@ -74,10 +74,7 @@ namespace GameTests.Characters
             var actual = occupation.Ability(abilityDto);
             var expected = ability;
 
-            Assert.AreEqual(expected.Health, actual.Health);
-            Assert.AreEqual(expected.Magic, actual.Magic);
-            Assert.AreEqual(expected.Intelligence, actual.Intelligence);
-            Assert.AreEqual(expected.Mattack, actual.Mattack);
+            Assert.AreEqual(JsonConvert.SerializeObject(expected), JsonConvert.SerializeObject(actual));
         }
 
         /// <summary>
@@ -100,15 +97,7 @@ namespace GameTests.Characters
             var actual = occupation.Ability(abilityDto);
             var expected = ability;
 
-            Console.WriteLine($"{expected.Health}, {actual.Health}");
-            Console.WriteLine($"{expected.Dexterity}, {actual.Dexterity}");
-            Console.WriteLine($"{expected.Luck}, {actual.Luck}");
-
-
-
-            Assert.AreEqual(expected.Health, actual.Health);
-            Assert.AreEqual(expected.Dexterity, actual.Dexterity);
-            Assert.AreEqual(expected.Luck, actual.Luck);
+            Assert.AreEqual(JsonConvert.SerializeObject(expected), JsonConvert.SerializeObject(actual));
         }
     }
 }

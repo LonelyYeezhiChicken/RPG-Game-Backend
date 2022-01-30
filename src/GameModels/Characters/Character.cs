@@ -1,6 +1,7 @@
 ﻿using GameModels.Characters.Interfaces;
 using GameModels.Characters.Models;
 using GameModels.Characters.Models.enums;
+using GameModels.Characters.Skills;
 using GameModels.Characters.Types;
 using System;
 using System.Collections.Generic;
@@ -16,24 +17,33 @@ namespace GameModels.Characters
     public class Character
     {
         private IOccupation occupation;
+        private ISkill skill;
+        public Character(OccupationEnum occupationEnum, ISkill skill)
+        {
+            this.occupation = GetOccupation(occupationEnum);
+            this.skill = skill;
+        }
 
-        public Character(OccupationEnum occupationEnum)
+        /// <summary>
+        /// 取得職業
+        /// </summary>
+        /// <param name="occupationEnum"></param>
+        /// <returns></returns>
+        private IOccupation GetOccupation(OccupationEnum occupationEnum)
         {
             switch (occupationEnum)
             {
                 case OccupationEnum.Warrior:
-                    occupation = new Warrior();
-                    break;
+                    return new Warrior();
                 case OccupationEnum.Tank:
-                    occupation = new Tank();
-                    break;
+                    return new Tank();
                 case OccupationEnum.Mage:
-                    occupation = new Mage();
-                    break;
+                    return new Mage();
                 default:
                     throw new Exception("無此職業");
             }
         }
+
         /// <summary>
         /// 建立角色
         /// 隨機產生數值
@@ -56,22 +66,24 @@ namespace GameModels.Characters
             ability.Mattack = random.Next(30, 100);
             return occupation.Ability(ability);
         }
-
         /// <summary>
-        /// 角色技能
+        /// 攻擊
         /// </summary>
-        public void Skills()
+        /// <param name="othersAbility">對手能力值</param>
+        /// <param name="userAbility">攻擊者能力值</param>
+        /// <returns></returns>
+        public AbilityDto SkillAttack(AbilityDto othersAbility, ref AbilityDto userAbility)
         {
+            //迴避
+            if (skill.IsDodge(othersAbility, userAbility))
+                throw new Exception($"對方躲過你的{skill.GetName}");
 
+            //發動技能
+            skill.UsingSkill(othersAbility, userAbility);
+
+            //技能結果
+            skill.AfterUsedSkill(userAbility);
+            return othersAbility;
         }
-
-        /// <summary>
-        /// 能力值
-        /// </summary>
-        public void Ability()
-        {
-
-        }
-
     }
 }

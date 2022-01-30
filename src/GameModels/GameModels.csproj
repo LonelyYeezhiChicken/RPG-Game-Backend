@@ -47,6 +47,7 @@
     <Compile Include="Characters\Interfaces\ISkill.cs" />
     <Compile Include="Characters\Models\AbilityDto.cs" />
     <Compile Include="Characters\Models\enums\OccupationEnum.cs" />
+    <Compile Include="Characters\Models\enums\SkillEnum.cs" />
     <Compile Include="Characters\Occupation\Mage.cs" />
     <Compile Include="Characters\Occupation\Tank.cs" />
     <Compile Include="Characters\Occupation\Warrior.cs" />

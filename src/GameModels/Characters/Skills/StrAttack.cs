@@ -61,7 +61,7 @@ namespace GameModels.Characters.Skills
                 throw new Exception($"對方已經死翹翹了");
 
             //扣血
-            othersAbility.Health = damage - othersAbility.Health;
+            othersAbility.Health = othersAbility.Health - damage;
 
             return othersAbility;
         }

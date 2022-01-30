@@ -30,6 +30,21 @@ namespace GameModels.Characters.Skills
         /// 描述
         /// </summary>
         public string GetDescription => throw new NotImplementedException();
+
+        /// <summary>
+        /// 是否迴避
+        /// </summary>
+        /// <param name="othersAbility">對方能力值</param>
+        /// <param name="userAbility">我方能力值</param>
+        /// <returns>是否迴避</returns>
+        public bool IsDodge(AbilityDto othersAbility, AbilityDto userAbility)
+        {
+            //計算傷害
+            int damage = FormulaHelper.GetDamage(userAbility.Strength, userAbility.Attack);
+
+            //是否被迴避
+            return FormulaHelper.IsDodge(damage, Convert.ToInt32(userAbility.Accuracy), Convert.ToInt32(othersAbility.Agility));
+        }
         /// <summary>
         /// 使用技能
         /// 傷害 : 基礎攻擊力 + 物理攻擊
@@ -42,15 +57,8 @@ namespace GameModels.Characters.Skills
             //計算傷害
             int damage = FormulaHelper.GetDamage(userAbility.Strength, userAbility.Attack);
 
-            //是否被迴避
-            if (FormulaHelper.IsDodge(damage, Convert.ToInt32(userAbility.Accuracy), Convert.ToInt32(othersAbility.Agility)))
-            {
-                throw new Exception($"對方躲掉了{GetName}");
-            }
-            if(othersAbility.Health <= 0)
-            {
+            if (othersAbility.Health <= 0)
                 throw new Exception($"對方已經死翹翹了");
-            }
 
             //扣血
             othersAbility.Health = damage - othersAbility.Health;
@@ -93,5 +101,6 @@ namespace GameModels.Characters.Skills
             userAbility.ActionPoint = userAbility.ActionPoint - 5;
             return userAbility;
         }
+
     }
 }

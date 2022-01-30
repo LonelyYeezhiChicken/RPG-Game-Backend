@@ -29,6 +29,13 @@ namespace GameModels.Characters.Interfaces
         /// </summary>
         string GetDescription { get; }
         /// <summary>
+        /// 是否迴避
+        /// </summary>
+        /// <param name="othersAbility">對方能力值</param>
+        /// <param name="userAbility">我方能力值</param>
+        /// <returns>是否迴避</returns>
+        bool IsDodge(AbilityDto othersAbility, AbilityDto userAbility);
+        /// <summary>
         /// 使用技能
         /// </summary>
         /// <param name="othersAbility">被使用對象的能力值</param>

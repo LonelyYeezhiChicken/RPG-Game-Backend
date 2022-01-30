@@ -19,7 +19,7 @@ namespace GameModels.Characters.Types
         /// <returns></returns>
         public AbilityDto Ability(AbilityDto ability)
         {
-            ability.Agility = FormulaHelper.AbilityRatio(ability.Agility, 0.8);
+            ability.Dexterity = FormulaHelper.AbilityRatio(ability.Dexterity, 0.8);
             ability.Health = FormulaHelper.AbilityRatio(ability.Health, 2);
             ability.Luck = FormulaHelper.AbilityRatio(ability.Luck, 2);
             return ability;

@@ -23,7 +23,7 @@ namespace GameModels.Characters.Types
             ability.Intelligence = FormulaHelper.AbilityRatio(ability.Intelligence, 1.5);
             ability.Magic = FormulaHelper.AbilityRatio(ability.Magic, 1.5);
             ability.Health = FormulaHelper.AbilityRatio(ability.Health, 0.8);
-            ability.Mattack = FormulaHelper.AbilityRatio(ability.Mattack, 0.8);
+            ability.Mattack = FormulaHelper.AbilityRatio(ability.Mattack, 2);
             return ability;
         }
     }

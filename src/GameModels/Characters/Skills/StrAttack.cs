@@ -29,7 +29,7 @@ namespace GameModels.Characters.Skills
         /// <summary>
         /// 描述
         /// </summary>
-        public string GetDescription => throw new NotImplementedException();
+        public string GetDescription => "紮紮實實，往對方臉上打一拳";
 
         /// <summary>
         /// 是否迴避

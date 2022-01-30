@@ -3,6 +3,7 @@ using GameModels.Characters.Models;
 using GameModels.Characters.Skills;
 using Newtonsoft.Json;
 using NUnit.Framework;
+using System;
 
 namespace GameTests.Characters.Skills
 {
@@ -28,7 +29,15 @@ namespace GameTests.Characters.Skills
             return abilityDto;
         }
 
-       
+        [Test]
+        public void StrAttackTest_確認屬性()
+        {
+            Console.WriteLine($"Id : {Skill.GetId}");
+            Console.WriteLine($"Name : {Skill.GetName}");
+            Console.WriteLine($"CD : {Skill.GetCD}");
+            Console.WriteLine($"說明 : {Skill.GetDescription}");
+        }
+
         [Test]
         public void StrAttackTest_打擊對方_正常扣血()
         {

@@ -13,13 +13,13 @@ namespace GameModels.Characters.Types
         /// 坦克能力值
         /// HP:2倍
         /// luck:2倍
-        /// 敏捷:0.8倍
+        /// 命中:0.8倍
         /// </summary>
         /// <param name="ability">基本數值</param>
         /// <returns></returns>
         public AbilityDto Ability(AbilityDto ability)
         {
-            ability.Dexterity = FormulaHelper.AbilityRatio(ability.Dexterity, 0.8);
+            ability.Accuracy = FormulaHelper.AbilityRatio(ability.Accuracy, 0.8);
             ability.Health = FormulaHelper.AbilityRatio(ability.Health, 2);
             ability.Luck = FormulaHelper.AbilityRatio(ability.Luck, 2);
             return ability;

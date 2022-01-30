@@ -21,7 +21,7 @@ namespace GameTests.Characters
             abilityDto.ActionPoint = 50;
             abilityDto.Strength = 100;
             abilityDto.Intelligence = 50;
-            abilityDto.Dexterity = 50;
+            abilityDto.Accuracy = 50;
             abilityDto.Luck = 50;
             abilityDto.Agility = 50;
             abilityDto.Attack = 50;
@@ -90,7 +90,7 @@ namespace GameTests.Characters
             AbilityDto abilityDto = GetAbilityDto();
             AbilityDto ability = GetAbilityDto();
             ability = GetAbilityDto();
-            ability.Dexterity = 50 * 0.8;
+            ability.Accuracy = 50 * 0.8;
             ability.Luck = 50 * 2;
             ability.Health = 2000 * 2;
 

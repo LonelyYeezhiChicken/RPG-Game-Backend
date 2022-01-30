@@ -1,6 +1,7 @@
 ﻿using GameModels.Characters.Interfaces;
 using GameModels.Characters.Models;
 using GameModels.Characters.Types;
+using Newtonsoft.Json;
 using NUnit.Framework;
 using System;
 
@@ -10,7 +11,7 @@ namespace GameTests.Characters
     class OccupationTest
     {
         private IOccupation occupation;
-        
+
         public AbilityDto GetAbilityDto()
         {
             AbilityDto abilityDto = new AbilityDto();
@@ -68,12 +69,15 @@ namespace GameTests.Characters
             ability.Mattack = 50 * 2;
             ability.Intelligence = 50 * 1.5;
             ability.Magic = 1000 * 1.5;
-            ability.Health = 2000 *0.8;
+            ability.Health = 2000 * 0.8;
 
             var actual = occupation.Ability(abilityDto);
             var expected = ability;
 
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(expected.Health, actual.Health);
+            Assert.AreEqual(expected.Magic, actual.Magic);
+            Assert.AreEqual(expected.Intelligence, actual.Intelligence);
+            Assert.AreEqual(expected.Mattack, actual.Mattack);
         }
 
         /// <summary>
@@ -89,15 +93,22 @@ namespace GameTests.Characters
             AbilityDto abilityDto = GetAbilityDto();
             AbilityDto ability = GetAbilityDto();
             ability = GetAbilityDto();
-            ability.Attack = 50 * 1.5;
-            ability.ActionPoint = 50 * 1.5;
-            ability.Health = 2000 * 1.5;
+            ability.Dexterity = 50 * 0.8;
+            ability.Luck = 50 * 2;
+            ability.Health = 2000 * 2;
 
             var actual = occupation.Ability(abilityDto);
             var expected = ability;
-            Console.WriteLine(expected.Health);
-            Console.WriteLine(actual.Health);
-            Assert.AreEqual(expected, actual);
+
+            Console.WriteLine($"{expected.Health}, {actual.Health}");
+            Console.WriteLine($"{expected.Dexterity}, {actual.Dexterity}");
+            Console.WriteLine($"{expected.Luck}, {actual.Luck}");
+
+
+
+            Assert.AreEqual(expected.Health, actual.Health);
+            Assert.AreEqual(expected.Dexterity, actual.Dexterity);
+            Assert.AreEqual(expected.Luck, actual.Luck);
         }
     }
 }

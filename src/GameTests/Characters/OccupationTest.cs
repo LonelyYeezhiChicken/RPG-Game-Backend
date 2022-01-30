@@ -82,6 +82,7 @@ namespace GameTests.Characters
         /// HP:2倍
         /// luck:2倍
         /// 敏捷:0.8倍
+        /// 迴避:1.5倍
         /// </summary>
         [Test]
         public void TankAbilityTest()
@@ -93,6 +94,7 @@ namespace GameTests.Characters
             ability.Accuracy = 50 * 0.8;
             ability.Luck = 50 * 2;
             ability.Health = 2000 * 2;
+            ability.Agility = 50 * 1.5;
 
             var actual = occupation.Ability(abilityDto);
             var expected = ability;

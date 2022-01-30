@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Characters\CharacterTest.cs" />
     <Compile Include="Characters\OccupationTest.cs" />
     <Compile Include="Characters\Skills\StrAttackTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

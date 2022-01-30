@@ -47,6 +47,10 @@ namespace GameModels.Characters.Skills
             {
                 throw new Exception($"對方躲掉了{GetName}");
             }
+            if(othersAbility.Health <= 0)
+            {
+                throw new Exception($"對方已經死翹翹了");
+            }
 
             //扣血
             othersAbility.Health = damage - othersAbility.Health;

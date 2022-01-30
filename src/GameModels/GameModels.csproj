@@ -44,11 +44,14 @@
     <Compile Include="Characters\Character.cs" />
     <Compile Include="Characters\Helper\FormulaHelper.cs" />
     <Compile Include="Characters\Interfaces\IOccupation.cs" />
+    <Compile Include="Characters\Interfaces\ISkill.cs" />
     <Compile Include="Characters\Models\AbilityDto.cs" />
     <Compile Include="Characters\Occupation\Mage.cs" />
     <Compile Include="Characters\Occupation\Tank.cs" />
     <Compile Include="Characters\Occupation\Warrior.cs" />
+    <Compile Include="Characters\Skills\StrAttack.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

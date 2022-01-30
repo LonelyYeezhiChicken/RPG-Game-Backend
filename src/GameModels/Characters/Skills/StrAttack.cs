@@ -54,6 +54,10 @@ namespace GameModels.Characters.Skills
         /// <returns>攻擊或加護後的能力值</returns>
         public AbilityDto UsingSkill(AbilityDto othersAbility, AbilityDto userAbility)
         {
+            //確認條件
+            if (userAbility.ActionPoint < 5)
+                throw new Exception($"AP不足，無法攻擊");
+
             //計算傷害
             int damage = FormulaHelper.GetDamage(userAbility.Strength, userAbility.Attack);
 
@@ -62,6 +66,10 @@ namespace GameModels.Characters.Skills
 
             //扣血
             othersAbility.Health = othersAbility.Health - damage;
+
+            //血量補正
+            if (othersAbility.Health <= 0)
+                othersAbility.Health = 0;
 
             return othersAbility;
         }

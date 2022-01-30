@@ -39,10 +39,10 @@ namespace GameModels.Characters.Models
         /// </summary>
         public double Intelligence { get; set; }
         /// <summary>
-        /// 敏捷
-        /// DEX
+        /// 命中
+        /// ACC
         /// </summary>
-        public double Dexterity { get; set; }
+        public double Accuracy { get; set; }
         /// <summary>
         /// 幸運
         /// LUK

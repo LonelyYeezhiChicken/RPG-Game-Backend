@@ -32,6 +32,20 @@ namespace GameModels.Characters.Skills
         public string GetDescription => "紮紮實實，往對方臉上打一拳";
 
         /// <summary>
+        /// 發動條件確認
+        /// </summary>
+        /// <param name="ap">我方</param>
+        /// <param name="hp">對方</param>
+        private void CheckData(double ap,double hp)
+        {
+            if (ap < 5)
+                throw new Exception($"AP不足，無法攻擊");
+            if (hp <= 0)
+                throw new Exception($"對方已經死翹翹了");
+        }
+
+
+        /// <summary>
         /// 是否迴避
         /// </summary>
         /// <param name="othersAbility">對方能力值</param>
@@ -54,19 +68,12 @@ namespace GameModels.Characters.Skills
         /// <returns>攻擊或加護後的能力值</returns>
         public AbilityDto UsingSkill(AbilityDto othersAbility, AbilityDto userAbility)
         {
-            //確認條件
-            if (userAbility.ActionPoint < 5)
-                throw new Exception($"AP不足，無法攻擊");
-
+            // 發動條件確認
+            CheckData(userAbility.ActionPoint, othersAbility.Health);
             //計算傷害
             int damage = FormulaHelper.GetDamage(userAbility.Strength, userAbility.Attack);
-
-            if (othersAbility.Health <= 0)
-                throw new Exception($"對方已經死翹翹了");
-
             //扣血
             othersAbility.Health = othersAbility.Health - damage;
-
             //血量補正
             if (othersAbility.Health <= 0)
                 othersAbility.Health = 0;

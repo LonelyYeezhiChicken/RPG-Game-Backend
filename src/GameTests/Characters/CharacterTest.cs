@@ -64,5 +64,16 @@ namespace GameTests.Characters
                 Console.WriteLine(ex.Message);
             }
         }
+
+        [TestCase(1)]
+        [TestCase(2)]
+        [TestCase(3)]
+        [TestCase(10)]
+        [TestCase(20)]
+        public void 升等(int LV)
+        {
+            Character character = new Character(OccupationEnum.Mage, new StrAttack());            
+            Console.WriteLine(character.GetExperiencePoint(LV));
+        }
     }
 }

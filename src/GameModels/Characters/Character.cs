@@ -44,6 +44,19 @@ namespace GameModels.Characters
             }
         }
 
+      
+        /// <summary>
+        /// 經驗值
+        /// (等級 - 1) ^3 + 60 / 5 * ((等級-1) * 2 + 60)
+        /// </summary>
+        /// <param name="lv">等級</param>
+        /// <returns></returns>
+        public double GetExperiencePoint(int lv)
+        {
+            if (lv <= 0)
+                throw new Exception("請輸入正確等級");
+            return (lv - 1) * (lv - 1) * (lv - 1) + 60 / 5 * ((lv - 1) * 2 + 60);
+        }
         /// <summary>
         /// 建立角色
         /// 隨機產生數值
@@ -103,7 +116,7 @@ namespace GameModels.Characters
             userAbility.Luck += random.Next(30, 50);
             userAbility.Agility += random.Next(30, 50);
             userAbility.Attack += random.Next(30, 50);
-            userAbility.Mattack += random.Next(30, 50);            
+            userAbility.Mattack += random.Next(30, 50);
             return userAbility;
         }
     }

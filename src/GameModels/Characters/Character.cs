@@ -44,6 +44,19 @@ namespace GameModels.Characters
             }
         }
 
+      
+        /// <summary>
+        /// 經驗值
+        /// (等級 - 1) ^3 + 60 / 5 * ((等級-1) * 2 + 60)
+        /// </summary>
+        /// <param name="lv">等級</param>
+        /// <returns></returns>
+        public double GetExperiencePoint(int lv)
+        {
+            if (lv <= 0)
+                throw new Exception("請輸入正確等級");
+            return (lv - 1) * (lv - 1) * (lv - 1) + 60 / 5 * ((lv - 1) * 2 + 60);
+        }
         /// <summary>
         /// 建立角色
         /// 隨機產生數值
@@ -84,6 +97,27 @@ namespace GameModels.Characters
             //技能結果
             skill.AfterUsedSkill(userAbility);
             return othersAbility;
+        }
+        /// <summary>
+        /// 升等
+        /// </summary>
+        /// <param name="userAbility">能力值</param>
+        /// <returns>升等後能力值</returns>
+        public AbilityDto LevelUp(AbilityDto userAbility)
+        {
+            Random random = new Random();
+            userAbility.Level += 1;
+            userAbility.Health += random.Next(500, 1000);
+            userAbility.Magic += random.Next(500, 1000);
+            userAbility.ActionPoint += random.Next(100, 500);
+            userAbility.Strength += random.Next(30, 50);
+            userAbility.Intelligence += random.Next(30, 50);
+            userAbility.Accuracy += random.Next(30, 50);
+            userAbility.Luck += random.Next(30, 50);
+            userAbility.Agility += random.Next(30, 50);
+            userAbility.Attack += random.Next(30, 50);
+            userAbility.Mattack += random.Next(30, 50);
+            return userAbility;
         }
     }
 }

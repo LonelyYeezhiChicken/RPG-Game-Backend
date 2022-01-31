@@ -85,5 +85,26 @@ namespace GameModels.Characters
             skill.AfterUsedSkill(userAbility);
             return othersAbility;
         }
+        /// <summary>
+        /// 升等
+        /// </summary>
+        /// <param name="userAbility">能力值</param>
+        /// <returns>升等後能力值</returns>
+        public AbilityDto LevelUp(AbilityDto userAbility)
+        {
+            Random random = new Random();
+            userAbility.Level += 1;
+            userAbility.Health += random.Next(500, 1000);
+            userAbility.Magic += random.Next(500, 1000);
+            userAbility.ActionPoint += random.Next(100, 500);
+            userAbility.Strength += random.Next(30, 50);
+            userAbility.Intelligence += random.Next(30, 50);
+            userAbility.Accuracy += random.Next(30, 50);
+            userAbility.Luck += random.Next(30, 50);
+            userAbility.Agility += random.Next(30, 50);
+            userAbility.Attack += random.Next(30, 50);
+            userAbility.Mattack += random.Next(30, 50);            
+            return userAbility;
+        }
     }
 }
